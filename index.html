@@ -6,21 +6,22 @@
 		<meta name="description" content="Front-End Mentor calculator app challenge solution">
 		<title>Frontend Mentor | Calculator app</title>
 		<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/styles.css">
 	</head>
 	<body>
 
-		<header>
-			<div class="header">
-				<h1 class="header__logo">calc</h1>
-				<h2 class="header__theme">THEME</h2>
+		<header class="header">
+			<h1 class="header__logo">calc</h1>
+			<h2 class="header__theme">THEME</h2>
 
-				<div class="theme">
-					<span class="theme__numbers">1 2 3</span>
-					<div class="current">
-						<div class="current__theme"></div>
-					</div>
+			<div class="theme">
+				<h2 class="theme__numbers">1 2 3</h2>
+				<div class="current">
+					<div class="current__theme"></div>
 				</div>
 			</div>
 		</header>
@@ -33,7 +34,7 @@
 				<button>7</button>
 				<button>8</button>
 				<button>9</button>
-				<button>DEL</button>
+				<button class="btn-special">DEL</button>
 				<button>4</button>
 				<button>5</button>
 				<button>6</button>
@@ -46,8 +47,8 @@
 				<button>0</button>
 				<button>&divide;</button>
 				<button>&times;</button>
-				<button>RESET</button>
-				<button>&equals;</button>
+				<button class="btn-special">RESET</button>
+				<button class="btn-special">&equals;</button>
 			</div>
 		</main>
 		<footer>
