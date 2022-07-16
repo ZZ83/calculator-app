@@ -13,6 +13,7 @@ BASE STYLES
 	--eq-shadow:         #93261A;
 	--special-background:#647198;
 	--special-shadow:    #414E73;
+	--hover-color:       #F96B5B;
 }
 
 *,
@@ -140,6 +141,9 @@ CURRENT STYLES
 		width:  0.5rem;
 		height: 0.5rem;
 		border-radius: 50%;
+	}
+	.select__btn:hover {
+		background-color: var(--hover-color);
 	}
 
 /*************************************  
