@@ -28,14 +28,13 @@ html {
 }
 
 body {
-	color:            var(--primary-color);
+	color: var(--primary-color);
 	background-color: var(--main-background);
 }
 
 h1 {
-	margin: 0;
-	margin-bottom:-0.17rem;
-  	font-size: 1rem;
+	font-size: 1rem;
+	margin: 0 0 -0.17rem 0;
 }
 
 h2 {
@@ -43,20 +42,41 @@ h2 {
   	font-size: 0.375rem;
 }
 
+span {
+	width:  0.5rem;
+	height: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 input {
 	font-size: 1.25rem;
-	color: var(--primary-color);
 	border: none;
+	color: var(--primary-color);
 	background-color: var(--input-background);
+}
+
+button {
+	border: none;
+	cursor: pointer;
+	background-color: transparent;
 }
 
 footer {
 	font-size: 0.5rem;
 }
 
+/*************************************  
+HELPER STYLES
+**************************************/
 .wrapper {
 	width: 90%;
 	margin: 0 auto;
+}
+
+.active-theme {
+	background-color: var(--eq-background);
 }
 
 /*************************************  
@@ -64,7 +84,6 @@ BUTTON STYLES
 **************************************/
 .btn {
 	color: var(--button-text);
-	border: none;
 	border-radius: 10px;
 	background-color: var(--button-background);
 	box-shadow: inset 0px -4px 0px var(--button-shadow);
@@ -87,51 +106,41 @@ HEADER STYLES
 **************************************/
 .header {
 	height: 1.313rem;
-	margin-top: 1rem;
+	margin-top: 0.938rem;
 	display: flex;
 	align-items: flex-end;
 }
-	.header__theme {
+	.header__theme-text {
 		margin-left: auto;
 		letter-spacing: 0.031rem;
 		margin-bottom: 0.147rem;
 		padding-right: 0.781rem;
 	}
-
-/*************************************  
-THEME STYLES
-**************************************/
-.theme {
-	
-}
-	.theme__numbers {
-		padding: 0 0.33rem;
+	.header__numbers {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: space-around;
 	}
-
+	
 /*************************************  
 CURRENT STYLES
 **************************************/
-.current {
-	width:  2.25rem;
+.select {
+	width:  2.219rem;
 	height: 0.813rem;
-	padding: 0 0.15rem;
+	padding: 0 0.02rem;
 	border-radius: 13px;
 	background-color: var(--keypad-background);
 	display: flex;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: space-around;
 	
 }
-	.current__theme {
+	.select__btn {
 		width:  0.5rem;
 		height: 0.5rem;
 		border-radius: 50%;
-		background-color: var(--eq-background);
 	}
-
 
 /*************************************  
 KEYPAD STYLES
@@ -159,4 +168,10 @@ MEDIA QUERIES
 	.btn-special {
 		font-size: 0.875rem;
 	}
+
+	.header {
+		height: 1.375rem;
+		margin-top: 3.063rem;
+	}
+	
 }

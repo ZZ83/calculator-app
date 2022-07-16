@@ -16,22 +16,19 @@
 		<!-- HEADER -->
 		<header class="header wrapper">
 			<h1 class="header__logo">calc</h1>
-			<h2 class="header__theme">THEME</h2>
-			<!-- THEME -->
-			<div class="theme">
-				<h2 class="theme__numbers">
-					<span>1</span>
-					<span>2</span>
-					<span>3</span>
-				</h2>
+			<h2 class="header__theme-text">THEME</h2>
+			<div>
+				<h2 class="header__numbers"><span>1</span><span>2</span><span>3</span></h2>
 				<!-- CURRENT-->
-				<div class="current">
-					<div class="current__theme"></div>
+				<div class="select">
+					<button class="select__btn active-theme"></button>
+					<button class="select__btn"></button>
+					<button class="select__btn"></button>
 				</div>
 			</div>
 		</header>
 
-		<main>
+		<main style="display: none;">
 			<div>
 				<input id="input" type="number" value="399981">
 			</div>
@@ -56,8 +53,8 @@
 				<button class="btn btn--special btn--special--eq">&equals;</button>
 			</div>
 		</main>
-		<footer>
-		<p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="#">Your Name Here</a>.</p>	
+		<footer style="display: none;">
+			<p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="#">Your Name Here</a>.</p>	
 		</footer>
 		<script src="script.js"></script>
 	</body>
