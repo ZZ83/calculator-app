@@ -14,6 +14,7 @@ BASE STYLES
 	--special-background:#647198;
 	--special-shadow:    #414E73;
 	--hover-color:       #F96B5B;
+	--hover-special:     #A2B2E1;
 }
 
 *,
@@ -29,6 +30,7 @@ html {
 }
 
 body {
+	margin: auto;
 	color: var(--primary-color);
 	background-color: var(--main-background);
 }
@@ -72,10 +74,11 @@ input::-webkit-inner-spin-button {
 }
 
 input[type=number] {
-    -moz-appearance:textfield;
+    -moz-appearance: textfield;
 }
 
 button {
+	font-size: 1rem;
 	border: none;
 	cursor: pointer;
 	background-color: transparent;
@@ -91,32 +94,11 @@ HELPER STYLES
 .wrapper {
 	width: 90%;
 	margin: 0 auto;
+	max-width: 540px;
 }
 
 .active-theme {
 	background-color: var(--eq-background);
-}
-
-/*************************************  
-BUTTON STYLES
-**************************************/
-.btn {
-	color: var(--button-text);
-	border-radius: 10px;
-	background-color: var(--button-background);
-	box-shadow: inset 0px -4px 0px var(--button-shadow);
-}
-
-.btn--special {
-	color: var(--white);
-	font-size: 0.625rem;
-	background-color: var(--special-background);
-	box-shadow: inset 0px -4px 0px var(--special-shadow);
-}
-
-.btn--special--eq {
-	background-color: var(--eq-background);
-	box-shadow: inset 0px -4px 0px var(--eq-shadow);
 }
 
 /*************************************  
@@ -167,8 +149,58 @@ CURRENT STYLES
 KEYPAD STYLES
 **************************************/
 .keypad {
+	height: 13.125rem;
 	font-size: 0.625rem;
+	padding: 24px 24px 0;
+	background-color: orange;
+	border-radius: 10px;
 	background-color: var(--keypad-background);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+/*************************************  
+BUTTON STYLES
+**************************************/
+.btn {
+	width: 22%;
+	max-width: 3.156rem;
+	padding-top: 6px;
+	height: 1.875rem;
+	color: var(--button-text);
+	border-radius: 10px;
+	background-color: var(--button-background);
+	box-shadow: inset 0px -4px 0px var(--button-shadow);
+
+	
+}
+.btn:hover {
+	background-color: var(--primary-color);
+}
+
+.btn--special {
+	color: var(--white);
+	font-size: 0.625rem;
+	background-color: var(--special-background);
+	box-shadow: inset 0px -4px 0px var(--special-shadow);
+}
+.btn--special:hover {
+	background-color: var(--hover-special);
+}
+
+.btn--special--reset,
+.btn--special--equals {
+	width: 48%;
+	max-width: 7.219rem;
+}
+
+.btn--special--equals {
+	background-color: var(--eq-background);
+	box-shadow: inset 0px -4px 0px var(--eq-shadow);
+}
+.btn--special--equals:hover {
+	background-color: var(--hover-color);
 }
 
 
@@ -178,8 +210,6 @@ MEDIA QUERIES
 @media (min-width: 540px) { 
 	body {
 		font-size: 40px;
-		max-width: 540px;
-		margin: auto;
 	}
 
 	input {
@@ -187,8 +217,8 @@ MEDIA QUERIES
 		font-size: 1.75rem;
 	}
 
-	.btn-special {
-		font-size: 0.875rem;
+	button {
+		font-size: 1.313rem;
 	}
 
 	.header {
@@ -196,4 +226,11 @@ MEDIA QUERIES
 		margin-top: 3.063rem;
 	}
 	
+	.keypad {
+		height: 15rem;
+	}
+
+	.btn-special {
+		font-size: 0.875rem;
+	}
 }
