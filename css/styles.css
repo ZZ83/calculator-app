@@ -4,17 +4,21 @@ BASE STYLES
 :root {
 	--primary-color:     #ffffff;
 	--main-background:   #3A4663;
-	--input-background:  #181F33;
+	--screen-background: #181F33;
+	--toggle-background: #242D44;
 	--keypad-background: #242D44;
-	--button-background: #EAE3DC;
-	--button-text:       #434A59;
-	--button-shadow:     #B3A497;
-	--eq-background:     #D03F2F;
-	--eq-shadow:         #93261A;
-	--special-background:#647198;
-	--special-shadow:    #414E73;
-	--hover-color:       #F96B5B;
-	--hover-special:     #A2B2E1;
+	--primary-keys-background:  #EAE3DC;
+	--primary-keys-text-color:  #434A59;
+	--primary-keys-box-shadow:  #B3A497;
+	--primary-keys-hover-color: #ffffff;
+	--secondary-keys-background:  #647198;
+	--secondary-keys-text-color:  #FFFFFF;
+	--secondary-keys-box-shadow:  #414E73;
+	--secondary-keys-hover-color: #A2B2E1;
+	--equal-key-background:  #D03F2F; /* ALSO THE TOGGLE BUTTON COLOR */
+	--equal-key-text-color:  #FFFFFF;
+	--equal-key-box-shadow:  #93261A; 
+	--equal-key-hover-color: #F96B5B; /* ALSO THE TOGGLE BUTTON COLOR */
 }
 
 *,
@@ -47,7 +51,7 @@ h2 {
 
 a {
 	text-decoration: none;
-	color: var(--primary-color);
+	color: var(--screen-background);
 }
 
 span {
@@ -69,7 +73,7 @@ input {
 	border: none;
 	border-radius: 10px;
 	color: var(--primary-color);
-	background-color: var(--input-background);
+	background-color: var(--screen-background);
 }
 
 input::-webkit-outer-spin-button,
@@ -92,7 +96,6 @@ button {
 footer {
 	font-size: 0.5rem;
 	text-align: center;
-	color: var(--input-background);
 	padding: 0.5rem 1rem;
 	letter-spacing: 0.02rem;
 }
@@ -107,7 +110,7 @@ HELPER STYLES
 }
 
 .active-theme {
-	background-color: var(--eq-background);
+	background-color: var(--equal-key-background);
 }
 
 /*************************************  
@@ -139,7 +142,7 @@ CURRENT STYLES
 	height: 0.813rem;
 	padding: 0 0.02rem;
 	border-radius: 13px;
-	background-color: var(--keypad-background);
+	background-color: var(--toggle-background);
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -151,7 +154,7 @@ CURRENT STYLES
 		border-radius: 50%;
 	}
 	.select__btn:hover {
-		background-color: var(--hover-color);
+		background-color: var(--equal-key-hover-color);
 	}
 
 /*************************************  
@@ -177,41 +180,41 @@ BUTTON STYLES
 	max-width: 3.156rem;
 	padding-top: 6px;
 	height: 1.875rem;
-	color: var(--button-text);
+	color: var(--primary-keys-text-color);
 	border-radius: 10px;
-	background-color: var(--button-background);
-	box-shadow: inset 0px -4px 0px var(--button-shadow);
+	background-color: var(--primary-keys-background);
+	box-shadow: inset 0px -4px 0px var(--primary-keys-box-shadow);
 
 	
 }
 .btn:hover {
-	background-color: var(--primary-color);
+	background-color: var(--primary-keys-hover-color);
 }
 
-.btn--special {
-	color: var(--white);
+.btn--secondary {
+	color: var(--secondary-keys-text-color);
 	font-size: 0.625rem;
-	background-color: var(--special-background);
-	box-shadow: inset 0px -4px 0px var(--special-shadow);
+	background-color: var(--secondary-keys-background);
+	box-shadow: inset 0px -4px 0px var(--secondary-keys-box-shadow);
 }
-.btn--special:hover {
-	background-color: var(--hover-special);
+.btn--secondary:hover {
+	background-color: var(--secondary-keys-hover-color);
 }
 
-.btn--special--reset,
-.btn--special--equals {
+.btn--reset,
+.btn--equals {
 	width: 48%;
 	max-width: 7.219rem;
 }
 
-.btn--special--equals {
-	background-color: var(--eq-background);
-	box-shadow: inset 0px -4px 0px var(--eq-shadow);
+.btn--equals {
+	color: var(--equal-key-text-color);
+	background-color: var(--equal-key-background);
+	box-shadow: inset 0px -4px 0px var(--equal-key-box-shadow);
 }
-.btn--special--equals:hover {
-	background-color: var(--hover-color);
+.btn--equals:hover {
+	background-color: var(--equal-key-hover-color);
 }
-
 
 /*************************************  
 MEDIA QUERIES
