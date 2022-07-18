@@ -51,7 +51,11 @@ h2 {
 
 a {
 	text-decoration: none;
-	color: var(--screen-background);
+	color: var(--primary-color);
+}
+
+a:hover {
+	color: var(--equal-key-background);
 }
 
 span {
