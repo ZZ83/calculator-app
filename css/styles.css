@@ -182,7 +182,7 @@ BUTTON STYLES
 .btn {
 	width: 22%;
 	max-width: 3.156rem;
-	padding-top: 6px;
+	padding-top: 4px;
 	height: 1.875rem;
 	color: var(--primary-keys-text-color);
 	border-radius: 10px;

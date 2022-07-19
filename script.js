@@ -93,3 +93,60 @@ const changeTheme = {
 changeTheme.changeThemeColor();
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const isNumber = new RegExp('\\d');
+const buttons = document.querySelectorAll('.btn');
+
+const input = document.querySelector('#input');
+console.log(input.value)
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if( isNumber.test(button.innerHTML)) {
+           let arr = input.value;
+           arr = arr.split("");
+           arr.push(button.innerHTML);
+           input.value = arr.join("");
+            console.log(arr)
+        }
+        if(button.innerHTML === "+") {
+            console.log(button.innerHTML)
+        }
+        if(button.innerHTML === "-") {
+            console.log(button.innerHTML)
+        }
+        if(button.innerHTML === "x") {
+            console.log(button.innerHTML)
+        }
+        if(button.innerHTML === "/") {
+            console.log(button.innerHTML)
+        }
+        if(button.innerHTML === ".") {
+            console.log(button.innerHTML)
+        }
+        if(button.innerHTML === "=") {
+            console.log(button.innerHTML)
+        }
+        if(button.innerHTML === "DEL") {
+            console.log(button.innerHTML)
+        }
+        if(button.innerHTML === "RESET") {
+            console.log(button.innerHTML)
+        }
+    })
+});
+
+
