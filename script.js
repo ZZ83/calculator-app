@@ -113,9 +113,23 @@ const buttons = document.querySelectorAll('.btn');
 const input = document.querySelector('#input');
 console.log(input.value)
 
+function reset(input) {
+    input.value = "";
+}
+
+function deleteNumber(input) {
+    let value = input.value;
+    value = value.split("");
+    value.pop();
+    input.value = value.join("");
+}
+
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         if( isNumber.test(button.innerHTML)) {
+            if(input.value === "0") {
+                input.value = "";
+            }
            let arr = input.value;
            arr = arr.split("");
            arr.push(button.innerHTML);
@@ -141,10 +155,10 @@ buttons.forEach((button) => {
             console.log(button.innerHTML)
         }
         if(button.innerHTML === "DEL") {
-            console.log(button.innerHTML)
+            deleteNumber(input);
         }
         if(button.innerHTML === "RESET") {
-            console.log(button.innerHTML)
+            reset(input);
         }
     })
 });
