@@ -98,20 +98,22 @@ changeTheme.changeThemeColor();
 
 
 
+const add      = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide   = (a, b) => a / b;
+
+function checkOper(operatorValue, a, b) {
+    if(operatorValue === "+") {
+     return add(a, b);
+    }
+    if(operatorValue === "-") {
+      return subtract(a, b);
+    }
+}
 
 
 
-
-
-
-
-
-
-const isNumber = new RegExp('\\d');
-const buttons = document.querySelectorAll('.btn');
-
-const input = document.querySelector('#input');
-console.log(input.value)
 
 function reset(input) {
     input.value = "";
@@ -124,41 +126,160 @@ function deleteNumber(input) {
     input.value = value.join("");
 }
 
+let total = 0;
+let firstTerm  = 0;
+let secondTerm = 0;
+
+let trigger   = false;
+let firstTry  = false;
+let operator;
+
+const isNumber = new RegExp('\\d');
+const input    = document.querySelector('#input');
+const buttons  = document.querySelectorAll('.btn');
+
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         if( isNumber.test(button.innerHTML)) {
             if(input.value === "0") {
                 input.value = "";
             }
-           let arr = input.value;
-           arr = arr.split("");
-           arr.push(button.innerHTML);
-           input.value = arr.join("");
-            console.log(arr)
+            if (trigger === true) {
+                input.value = "";
+                trigger = false;
+                console.log("asas");
+            }
+            let arr = input.value;
+            arr = arr.split("");
+            arr.push(button.innerHTML);
+            input.value = arr.join("");
         }
         if(button.innerHTML === "+") {
-            console.log(button.innerHTML)
+            if (firstTry === false) {
+                operator = "+";
+                firstTry = true;
+                trigger  = true;
+                firstTerm = parseFloat(input.value)
+                console.log("Add A");
+            } else {
+                trigger  = true;
+                secondTerm = parseFloat(input.value)
+                total = checkOper(operator, firstTerm, secondTerm)
+                console.log("Add B")
+                input.value = total;
+                firstTerm = total;
+                operator = "+";
+            }
         }
+
         if(button.innerHTML === "-") {
-            console.log(button.innerHTML)
+            if (firstTry === false) {
+                operator = "-";
+                firstTry = true;
+                trigger  = true;
+                firstTerm = parseFloat(input.value)
+                console.log("Subtract A");
+            } else {
+                trigger  = true;
+                secondTerm = parseFloat(input.value)
+                total = checkOper(operator, firstTerm, secondTerm)
+                console.log("Subtract B");
+                input.value = total;
+                firstTerm = total;
+                operator = "-";
+            }
         }
+
+        
         if(button.innerHTML === "x") {
-            console.log(button.innerHTML)
+            if (firstTry === false) {
+                operator = "x";
+                firstTry = true;
+                trigger  = true;
+                firstTerm = parseFloat(input.value)
+                console.log("Mulitply A");
+            } else {
+                trigger  = true;
+                secondTerm = parseFloat(input.value)
+                total = checkOper(operator, firstTerm, secondTerm)
+                console.log("Mulitply B");
+                input.value = total;
+                firstTerm = total;
+                operator = "x";
+            }
         }
+
         if(button.innerHTML === "/") {
-            console.log(button.innerHTML)
+            if (firstTry === false) {
+                operator = "/";
+                firstTry = true;
+                trigger  = true;
+                firstTerm = parseFloat(input.value)
+                console.log("Divide A");
+            } else {
+                trigger  = true;
+                secondTerm = parseFloat(input.value)
+                total = checkOper(operator, firstTerm, secondTerm)
+                console.log("Divide B");
+                input.value = total;
+                firstTerm = total;
+                operator = "/";
+            }
         }
-        if(button.innerHTML === ".") {
-            console.log(button.innerHTML)
-        }
-        if(button.innerHTML === "=") {
-            console.log(button.innerHTML)
-        }
+
+
         if(button.innerHTML === "DEL") {
             deleteNumber(input);
         }
         if(button.innerHTML === "RESET") {
+            firstTerm  = 0;
+            secondTerm = 0
+            total = 0;
+            trigger = false;
+            firstTry = false
             reset(input);
+        }
+        if(button.innerHTML === "=") {
+            if(operator === "+") {
+                secondTerm = parseFloat(input.value)
+                total = add(firstTerm, secondTerm);
+                console.log(total)
+                input.value = total;
+                firstTry = false;
+                total = 0;
+                firstTerm = 0;
+                secondTerm = 0;
+            }
+            if(operator === "-") {
+                secondTerm = parseFloat(input.value)
+                total = subtract(firstTerm, secondTerm);
+                console.log(total)
+                input.value = total;
+                firstTry = false;
+                total = 0;
+                firstTerm = 0;
+                secondTerm = 0;
+            }
+            if(operator === "x") {
+                secondTerm = parseFloat(input.value)
+                total = multiply(firstTerm, secondTerm);
+                console.log("CHECK M")
+                input.value = total;
+                firstTry = false;
+                total = 0;
+                firstTerm = 0;
+                secondTerm = 0;
+            }
+            if(operator === "/") {
+                secondTerm = parseFloat(input.value)
+                total = divide(firstTerm, secondTerm);
+                console.log("CHECK M")
+                input.value = total;
+                firstTry = false;
+                total = 0;
+                firstTerm = 0;
+                secondTerm = 0;
+            }
         }
     })
 });
