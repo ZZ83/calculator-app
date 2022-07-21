@@ -121,7 +121,7 @@ function deleteNumber(input) {
     input.value = value.join("");
 }
 
-function maxCharaterLength(string, length) {
+function maxCharacterLength(string, length) {
     if (string.length > length) {
         return string.substring(0, length);
     } else {
@@ -129,7 +129,7 @@ function maxCharaterLength(string, length) {
     }
 }
 
-console.log(maxCharaterLength("this,is", 7))
+
 
 function equalsLogic(operand) {
     if(operator === operand) {
@@ -191,7 +191,7 @@ buttons.forEach((button) => {
             arr = arr.split("");
             arr.push(button.innerHTML); 
             arr = arr.join("");
-            arr = maxCharaterLength(arr, 15)
+            arr = maxCharacterLength(arr, 15)
             arr = arr.replace(/\,/g,'');
             arr = parseFloat(arr);
             arr = arr.toLocaleString("en-US", { maximumFractionDigits: 19 })
@@ -211,7 +211,7 @@ buttons.forEach((button) => {
             arr = arr.split("");
             arr.push(".");
             arr = arr.join(""); // Here
-            arr = maxCharaterLength(arr, 15)
+            arr = maxCharacterLength(arr, 15)
             input.value =  arr; // Here
             checkForTwoDecimals(input); 
         }
