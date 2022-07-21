@@ -94,71 +94,6 @@ changeTheme.changeThemeColor();
 
 
 
-
-
-
-
-const add      = (a, b) => a + b;
-const subtract = (a, b) => a - b;
-const multiply = (a, b) => a * b;
-const divide   = (a, b) => a / b;
-
-function checkOper(operatorValue, a, b) {
-    if(operatorValue === "+") {
-     return add(a, b);
-    }
-    if(operatorValue === "-") {
-      return subtract(a, b);
-    }
-    if(operatorValue === "x") {
-        return multiply(a, b);
-    }
-    if(operatorValue === "/") {
-        return divide(a, b);
-    }
-}
-
-function mathLogic(btn, operan) {
-    if(btn.innerHTML === operan) {
-        if (firstTry === false) {
-            operator = operan;
-            firstTry = true;
-            trigger  = true;
-            firstTerm = parseFloat(input.value)
-        } else {
-            trigger  = true;
-            secondTerm = parseFloat(input.value)
-            total = checkOper(operator, firstTerm, secondTerm)
-            input.value = total;
-            firstTerm = total;
-            operator = operan;
-        }
-    }
-}
-
-function equalsLogic(operan) {
-    if(operator === operan) {
-        secondTerm = parseFloat(input.value)
-        total = checkOper(operator, firstTerm, secondTerm)
-        input.value = total;
-        firstTry = false;
-        total = 0;
-        firstTerm = 0;
-        secondTerm = 0;
-    }
-}
-
-function reset(input) {
-    input.value = 0;
-}
-
-function deleteNumber(input) {
-    let value = input.value;
-    value = value.split("");
-    value.pop();
-    input.value = value.join("");
-}
-
 let total = 0;
 let firstTerm  = 0;
 let secondTerm = 0;
@@ -170,6 +105,77 @@ let operator;
 const isNumber = new RegExp('\\d');
 const input    = document.querySelector('#input');
 const buttons  = document.querySelectorAll('.btn');
+
+function runOperation(operatorValue, a, b) {
+    if(operatorValue === "+") return a + b;
+    if(operatorValue === "-") return a - b;
+    if(operatorValue === "x") return a * b;
+    if(operatorValue === "/") return a / b;
+}
+
+function deleteNumber(input) {
+    let value = input.value;
+    value = value.split("");
+    value.pop();
+   
+    input.value = value.join("");
+}
+
+function maxCharaterLength(string, length) {
+    if (string.length > length) {
+        return string.substring(0, length);
+    } else {
+        return string;
+    }
+}
+
+console.log(maxCharaterLength("this,is", 7))
+
+function equalsLogic(operand) {
+    if(operator === operand) {
+        secondTerm = parseFloat(input.value)
+        total = runOperation(operator, firstTerm, secondTerm)
+        input.value = total;
+        firstTry = false;
+        total = 0;
+        firstTerm = 0;
+        secondTerm = 0;
+    }
+}
+
+function mathLogic(btn, operand) {
+    if(btn.innerHTML === operand) {
+        if (firstTry === false) {
+            operator = operand;
+            firstTry = true;
+            trigger  = true;
+            firstTerm = parseFloat(input.value)
+        } else {
+            trigger  = true;
+            secondTerm = parseFloat(input.value)
+            total = runOperation(operator, firstTerm, secondTerm)
+            input.value = total;
+            firstTerm = total;
+            operator = operand;
+        }
+    }
+}
+
+function checkForTwoDecimals(input) {
+    let numberOfDecimals = 0;
+    let arr = input.value.split("");
+    for (let i = 0; i < arr.length; i++) {
+        if(numberOfDecimals === 1 ) {
+            arr.pop();
+            break;
+        } else {
+            if(arr[i] === ".") {
+                numberOfDecimals++;
+            }
+        }  
+    }
+   input.value = arr.join("");
+}
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -183,25 +189,39 @@ buttons.forEach((button) => {
             }
             let arr = input.value;
             arr = arr.split("");
-            arr.push(button.innerHTML);
-            input.value = arr.join("");
+            arr.push(button.innerHTML); 
+            arr = arr.join("");
+            arr = maxCharaterLength(arr, 15)
+            arr = arr.replace(/\,/g,'');
+            arr = parseFloat(arr);
+            arr = arr.toLocaleString("en-US", { maximumFractionDigits: 19 })
+            console.log(arr)
+           
+            input.value = arr; // Here
         }
-
         mathLogic(button, "+");
         mathLogic(button, "-");
         mathLogic(button, "x");
         mathLogic(button, "/");
-
         if(button.innerHTML === "DEL") {
-            deleteNumber(input);
+            deleteNumber(input);  
+        }
+        if(button.innerHTML === ".") {
+            let arr = input.value;
+            arr = arr.split("");
+            arr.push(".");
+            arr = arr.join(""); // Here
+            arr = maxCharaterLength(arr, 15)
+            input.value =  arr; // Here
+            checkForTwoDecimals(input); 
         }
         if(button.innerHTML === "RESET") {
-            firstTerm  = 0;
-            secondTerm = 0
-            total = 0;
-            trigger = false;
-            firstTry = false
-            reset(input);
+            total       = 0;
+            firstTerm   = 0;
+            secondTerm  = 0;
+            input.value = 0;
+            trigger     = false;
+            firstTry    = false
         }
         if(button.innerHTML === "=") {
             equalsLogic("+")
