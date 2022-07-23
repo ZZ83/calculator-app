@@ -1,5 +1,5 @@
 import { changeTheme }  from './themeChange.js'
-import { runOperation, maxCharacterLength, checkForTwoDecimals, deleteNumber } from './functions.js'
+import { runOperation, maxCharacterLength, checkForTwoDecimals, deleteNumber, removeCommasFrom, addCommasTo, convertToFloat } from './functions.js'
 
 let total = 0;
 let firstTerm  = 0;
@@ -11,8 +11,6 @@ const isNumber = new RegExp('\\d');
 const input    = document.querySelector('#input');
 const buttons  = document.querySelectorAll('.btn');
 
-
-
 export function reset() {
     total       = 0;
     firstTerm   = 0;
@@ -21,11 +19,13 @@ export function reset() {
     firstTry    = false;
 }
 
+
+
 function equalsLogic(operand) {
     if(operator === operand) {
-        secondTerm = parseFloat(input.value)
+        secondTerm = convertToFloat(input.value);
         total = runOperation(operator, firstTerm, secondTerm)
-        input.value = total;
+        input.value = addCommasTo(total.toString());
         reset();
     }
 }
@@ -37,10 +37,16 @@ function mathLogic(btn, operand) {
             operator = operand;
             firstTry = true;
             trigger  = true;
-            firstTerm = parseFloat(input.value)
+
+            firstTerm = convertToFloat(input.value);
+
+            console.log(firstTerm);
         } else {
             trigger  = true;
-            secondTerm = parseFloat(input.value)
+
+            secondTerm = convertToFloat(input.value);
+
+            console.log(secondTerm);
             total = runOperation(operator, firstTerm, secondTerm)
             input.value = total;
             firstTerm = total;
@@ -52,7 +58,6 @@ function mathLogic(btn, operand) {
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         if( isNumber.test(button.innerHTML)) {
-            console.log(button.innerHTML);
             // Removes the default zero once a number is pressed
             if(input.value === "0") {
                 input.value = "";
@@ -62,13 +67,26 @@ buttons.forEach((button) => {
                 trigger = false;
             }
             let arr = [...input.value];
-            arr.push(button.innerHTML); 
-            arr = arr.join("");
-            arr = maxCharacterLength(arr, 15)
-            arr = arr.replace(/\,/g,'');
-            // arr = parseFloat(arr);
-            arr = arr.toLocaleString("en-US", { maximumFractionDigits: 19 })
-            input.value = arr; 
+            arr.push(button.innerHTML);
+            arr = arr.join(""); 
+            arr = maxCharacterLength(arr, 15);
+            arr = removeCommasFrom(arr);
+            if(arr.includes(".")) {
+                let firstHalf = parseInt(arr);
+                    firstHalf = firstHalf.toString();
+                    firstHalf = removeCommasFrom(firstHalf);
+                let decimalStr = arr.toString().split('.')[1];
+                let secondHalf = decimalStr.split("");
+                secondHalf = secondHalf.join("");
+                firstHalf = addCommasTo(firstHalf);
+                secondHalf = removeCommasFrom(secondHalf);
+                arr = firstHalf.concat(".", secondHalf);
+                console.log(arr);
+                input.value = arr;
+            } else {
+                arr = addCommasTo(arr);
+                input.value = arr; 
+            } 
         }
         if(button.innerHTML === ".") {
             let arr = [...input.value];

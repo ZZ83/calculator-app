@@ -36,10 +36,26 @@ export function deleteNumber(input) {
     value = value.join("");
     value = value.replace(/\,/g,'');
     // value = parseFloat(value);
-    value = value.toLocaleString("en-US", { maximumFractionDigits: 19 })
-    value = value.toString();
+    value = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    value = value;
     if (value === "NaN") {
         value = "";
     }
     input.value = value;
+}
+
+
+export function removeCommasFrom(string) {
+    return string.replace(/\,/g,'');
+}
+
+export function addCommasTo(string) {
+    return string.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+export function convertToFloat(string) {
+    let str = string;
+    str = removeCommasFrom(str);
+    str = parseFloat(str);
+    return str;
 }
