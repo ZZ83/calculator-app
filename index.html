@@ -21,9 +21,9 @@
 				<h2 class="header__numbers"><span>1</span><span>2</span><span>3</span></h2>
 				<!-- CURRENT-->
 				<div class="select">
-					<button class="select__btn active-theme"></button>
-					<button class="select__btn"></button>
-					<button class="select__btn"></button>
+					<button class="select__btn active-theme" aria-label="Color Theme One"></button>
+					<button class="select__btn" aria-label="Color Theme Two"></button>
+					<button class="select__btn" aria-label="Color Theme Three"></button>
 				</div>
 			</div>
 		</header>
@@ -31,34 +31,34 @@
 		<main class="wrapper">
 			<!-- INPUT -->
 			<div>
-				<input id="input" type="text" value="0">
+				<input id="input" type="text" value="0" disabled>
 			</div>
 			<!-- KEYPAD -->
 			<div class="keypad">
 				<button class="btn">7</button>
 				<button class="btn">8</button>
 				<button class="btn">9</button>
-				<button class="btn btn--secondary">DEL</button>
+				<button class="btn btn--secondary" aria-label="Delete">DEL</button>
 				<button class="btn">4</button>
 				<button class="btn">5</button>
 				<button class="btn">6</button>
-				<button class="btn">+</button>
+				<button class="btn" aria-label="Add">+</button>
 				<button class="btn">1</button>
 				<button class="btn">2</button>
 				<button class="btn">3</button>
-				<button class="btn">-</button>
-				<button class="btn">.</button>
+				<button class="btn" aria-label="Minus">-</button>
+				<button class="btn" aria-label="Decimal">.</button>
 				<button class="btn">0</button>
-				<button class="btn">/</button>
-				<button class="btn">x</button>
-				<button class="btn btn--secondary btn--reset">RESET</button>
-				<button class="btn btn--equals">=</button>
+				<button class="btn" aria-label="Divide">/</button>
+				<button class="btn" aria-label="Multiply">x</button>
+				<button class="btn btn--secondary btn--reset" aria-label="Reset">RESET</button>
+				<button class="btn btn--equals" aria-label="Equals">=</button>
 			</div>
 		</main>
 		<!-- FOOTER -->
 		<footer class="wrapper">
 			<p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="#">Zekel Keys</a>.</p>	
 		</footer>
-		<script type="module" src="js/script.js"></script>
+		<script src="script.js"></script>
 	</body>
 </html>
