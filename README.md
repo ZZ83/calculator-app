@@ -49,5 +49,5 @@ I would like to start commenting my code more and start writing cleaner code in 
 
 ## Author
 
-- DEV - [ZZ83](https://www.twitter.com/yourusername)
-- Frontend Mentor - [ZZ83](https://dev.to/zz83)
+- DEV - [ZZ83](https://dev.to/zz83)
+- Frontend Mentor - [ZZ83](https://www.frontendmentor.io/profile/ZZ83)
